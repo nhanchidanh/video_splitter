@@ -18,6 +18,47 @@ Một ứng dụng GUI đơn giản để tách khung hình từ video thành c�
 
 ## 📦 Cài đặt
 
+## 🗜️ Đóng gói ứng dụng thành file .exe (Windows)
+
+Bạn có thể đóng gói ứng dụng thành file thực thi (.exe) để dễ dàng chia sẻ mà không cần cài Python.
+
+### Các bước thực hiện:
+
+1. Kích hoạt môi trường ảo:
+   ```powershell
+   .venv\Scripts\activate
+   ```
+2. Cài đặt PyInstaller:
+   ```powershell
+   pip install pyinstaller
+   ```
+3. Đóng gói ứng dụng:
+
+   ```powershell
+   pyinstaller --onefile --windowed video_splitter.py
+   ```
+
+   - File .exe sẽ nằm trong thư mục `dist/` (ví dụ: `dist/video_splitter.exe`)
+   - Tham số `--windowed` giúp ẩn cửa sổ console khi chạy app GUI
+   - Không cần commit file .exe lên Git, đã có trong .gitignore
+
+4. (Tuỳ chọn) Đổi icon cho app:
+
+   ```powershell
+   pyinstaller --onefile --windowed --icon=icon.ico video_splitter.py
+   ```
+
+   (Bạn cần chuẩn bị file icon.ico)
+
+5. Nếu muốn build lại, hãy xoá thư mục `build/` và `dist/` trước khi chạy lại lệnh trên.
+
+### Lưu ý:
+
+- Chỉ cần commit source code, không commit file build (.exe, .spec, dist/)
+- Nếu chia sẻ cho người dùng khác, chỉ cần gửi file .exe trong thư mục dist/
+
+---
+
 ### Phương pháp 1: Sử dụng file run.bat (Windows)
 
 1. Clone repository:
